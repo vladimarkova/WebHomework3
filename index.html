@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="author" content="vmarkova"/>
+        <meta name="description" content="Registration form"/>
+        <meta charset="utf-8" />
+
+        <link href="styling.css" rel="stylesheet"></link>
+        <link href = "register.png" rel="icon" type="image/jpg">
+
+        <script defer src="utility.js"></script>
+        <script defer src="userRegister.js"></script>
+
+        <title>Регистрация</title>
+        <body>
+            <div class="form-style-2">
+                <div class="form-style-2-heading">Регистрация</div>
+                <form>
+                    <label for="username"><span>Потребителско име</span><span class="required">*</span>
+                    <input id="username" name="username" type="text" class="input-field"  placeholder="Между три и десет символа" /></label> 
+                    
+                    <br />
+
+                    <label for="name"><span>Име и фамилия</span><span class="required">*</span>
+                    <input id="name" name="name" type="text" class="input-field" placeholder="Максимум петдесет символа"/></label> 
+                    
+                    <br />
+
+                    <label for="email"><span>Email</span><span class="required">*</span>
+                    <input id="email" name="email" type="email" class="input-field" placeholder="Въведете валиден email адрес"/></label> 
+                    
+                    <br />
+
+                    <label for="password"><span>Парола</span><span class="required">*</span>
+                    <input id="password" name="password" type="password" class="input-field" placeholder="Над шест и под десет с., гл., м. б. и цифри"/></label> 
+                    
+                    <br />
+
+                    <label><span>Адрес</span>
+                    
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                    <label for="street"><span>Улица</span><span></span>
+                    <input id="street" name="street" type="text" class="input-field"/></label> 
+                    
+                    <br />
+
+                    <label for="city"><span>Град</span><span></span>
+                    <input id="city" name="city" type="text" class="input-field"/></label> 
+                    
+                    <br />
+
+                    <label for="postal-code"><span>Пощенски код</span><span></span>
+                    <input id="postal-code" name="postal-code" type="text" class="input-field" placeholder="Във формат 11111-1111"/></label> 
+                    
+                    <label><span></span><span></span><input id="register-btn" type="submit" value="Запиши" ></input></label>      
+                </form>
+            </div>
+
+            <div id="success"></div>
+            <div id="error"></div>
+            <div id="selectMade"></div>
+            <div id="test"></div>
+        </body>
+    </head>
+</html>
