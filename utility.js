@@ -15,7 +15,8 @@ const getInfo = data => {
 
     var username = document.getElementById('username').value;
     var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
+    var familyName = document.getElementById('family-name').value;
+    var emailV = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var street = document.getElementById('street').value;
     var city = document.getElementById('city').value;
@@ -25,49 +26,69 @@ const getInfo = data => {
     if (username) {
         if (username.length < 3 || username.length > 10) {
             const error = document.getElementById('error');
-            error.innerHTML += 'Невалидно Потребителско име (трябва да е между три и десет символа)';
+            error.innerHTML += 'Невалидно потребителско име (трябва да е между три и десет символа)';      
             allCorrect = false;
         }
     } else {
         const error = document.getElementById('error');
-        error.innerHTML += ' Невалидно Потребителско име Потребителското име е задължително поле!';
+        error.innerHTML += ' Невалидно потребителско име Потребителското име е задължително поле!';
         allCorrect = false;
     }
 
     if (name) {
         if (name.length > 50) {
             const error = document.getElementById('error');
-            error.innerHTML += ' Невалидно Име и фамилия (трябва да е под петдесет символа)';
+            error.innerHTML += ' Невалидно име (трябва да е под петдесет символа)';
             allCorrect = false;
         }
     } else {
         const error = document.getElementById('error');
-        error.innerHTML += ' Невалидно Име и фамилия Името е задължително поле!';
+        error.innerHTML += ' Невалидно име Името е задължително поле!';
         allCorrect = false;
     }
 
-    if (email == '') {
+    if (familyName) {
+        if (familyName.length > 50) {
+            const error = document.getElementById('error');
+            error.innerHTML += ' Невалидно фамилно име (трябва да е под петдесет символа)';
+            allCorrect = false;
+        }
+    } else {
         const error = document.getElementById('error');
-        error.innerHTML += ' Невалиден Email Email е задължително поле!';
+        error.innerHTML += ' Невалидно фамилно име Фамилия е задължително поле!';
+        allCorrect = false;
+    }
+
+    if (emailV) { 
+        var emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;    
+        if (!emailV.match(emailPattern)) {
+            console.log('DO NOT MATCH!');
+            const error = document.getElementById('error');
+            error.innerHTML += ' Невалиден e-mail Email изглежда така: myemail@something.some!';
+            allCorrect = false; 
+        } 
+    } else {
+        const error = document.getElementById('error');
+        error.innerHTML += ' Невалиден e-mail Email е задължително поле!';
         allCorrect = false;
     }
 
     if (password) {
         if (password.length < 6 || password.length > 10) {
             const error = document.getElementById('error');
-            error.innerHTML += ' Невалидна Парола (трябва да е между шест и десет символа)';
+            error.innerHTML += ' Невалидна парола (трябва да е между шест и десет символа)';
             allCorrect = false;
         } else {
             var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}$/;
             if (!password.match(passw)) {
                 const error = document.getElementById('error');
-                error.innerHTML += ' Невалидна Парола (трябва да съдържа поне една малка, една главна букви и поне една цифра)';
+                error.innerHTML += ' Невалидна парола (трябва да съдържа поне една малка, една главна букви и поне една цифра)';
                 allCorrect = false;
             }
         }
     } else {
         const error = document.getElementById('error');
-        error.innerHTML += ' Невалидна Парола Паролата е задължително поле!';
+        error.innerHTML += ' Невалидна парола паролата е задължително поле!';
         allCorrect = false;
     }
 
@@ -75,7 +96,7 @@ const getInfo = data => {
         var postalC = /(^[0-9]{5})\-([0-9]{4})/;
         if (!postalCode.match(postalC)) {
             const error = document.getElementById('error');
-            error.innerHTML += ' Невалиден Пощенски код Пощенскит код изглежда така: 11111-1111!';
+            error.innerHTML += ' Невалиден пощенски код пощенскит код изглежда така: 11111-1111!';
             allCorrect = false;
         }
     }
@@ -95,17 +116,23 @@ const getInfo = data => {
             console.log("Inserted user!");
             const success = document.getElementById('success');
             success.innerHTML = `Успешно регистрирахте потребител ${name} с потребителско име ${username}`;
-        }
-    }
+            
 
-    const selectMade = document.getElementById('selectMade');
-    selectMade.innerHTML = `Select made! ${username}`;
+            var s = document.createElement('div');
+            var text = document.createTextNode('Текст тук');
+            s.appemd(text);
+            s.setAttribute('id', 'successTab');
+        }
+    } 
 
     var usernameField = document.getElementById('username');
     usernameField.value = "";
 
     var nameField = document.getElementById('name');
     nameField.value = "";
+
+    var familyNameField = document.getElementById('family-name');
+    familyNameField.value = "";
 
     var emailField = document.getElementById('email');
     emailField.value = "";
